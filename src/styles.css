@@ -268,9 +268,10 @@ h1{
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
     padding: 1rem 0;
-    /* position: relative; */
+    scrollbar-width: none;
+     /* position: relative; */
     /* padding-left: 4rem; */
 }
 
@@ -314,7 +315,6 @@ h1{
     background: white;
     z-index: 1000;
     border-radius: 0%;
-    /* pointer-events: none; */
 }
 
 .fd-icon{
@@ -364,9 +364,16 @@ h1{
 
 .deets{
     width: 100%;
+    height: 100%;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: space-between;
+    flex-direction: column;
+    padding:  0.2rem;
+}
+
+.deets.close{
+    display: none;
 }
 
 .deets > *{
@@ -374,8 +381,19 @@ h1{
     color: grey;
     opacity: 0.45;
     padding: 0 0.5rem;
-    margin: 0;
-    margin-bottom: 2.5px;
+    /* margin: 0; */
+    margin: 2.5px 0;
+}
+
+.deets h3{
+    margin-top: 2rem;
+}
+
+.dts{
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .ex-deets{
@@ -394,11 +412,6 @@ h1{
     opacity: 1;
 }
 
-#collapsetwo{
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
-}
-
 .ex-heading{
     display: flex;
     justify-content: flex-start;
@@ -406,6 +419,11 @@ h1{
     width: 100%;
     position: fixed;
     top: 0;
+}
+
+.ex-heading i:first-child{
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
 }
 
 .ex-heading h2{
@@ -646,6 +664,14 @@ h1{
     height: 100%;
 }
 
+.pencil{
+    left: -10%;
+}
+
+.pencil .inputbox button{
+    width: 103%;
+}
+
 .create form .inputbox:nth-child(2){
     height: 1.5rem;
     margin-bottom: 0; 
@@ -667,12 +693,35 @@ h1{
 
 .task-heading{
     width: 100%;
+    position: relative;
 }
 
 .task-heading h2{
     margin-left: 0;
     text-align: center;
 }
+
+.pencil .task-heading{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.pencil .task-heading i{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    width: 25px;
+    height: 25px;
+    display: block;
+    border: 1px solid;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
 
 /* .fa-pencil-alt{
     align-self: flex-end;

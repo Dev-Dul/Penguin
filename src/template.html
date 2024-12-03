@@ -66,13 +66,19 @@
           <p class="quote-author">-Tim Denning.</p>
         </div>
         <div class="projects">
-          <div class="major">
+          <div class="major" id="major">
             <h2 class="p-heading">Projects</h2>
             <div class="project">
               <!-- <div class="fd-icon">
                 <i class="fas fa-folder"></i>
               </div> -->
-              <!-- <div class="deets"><h3>Travel</h3><p>30/11/24</p></div> -->
+              <div class="deets">
+                <h3>Travel</h3>
+                <div class="dts">
+                  <p>30/11/24</p>
+                  <p class="pr-time">2:23 AM</p>
+                </div>
+              </div>
               <div class="ex-deets">
                 <div class="ex-heading">
                   <i class="fas fa-chevron-left" id="collapsetwo"></i>
@@ -95,12 +101,13 @@
                   <ul>
                     <div class="ex-list">
                       <li>
-                        <label for=""><input type="checkbox" /></label>Task 1
+                        <label for=""><input type="checkbox" />Task 1</label>
                       </li>
                       <div class="arrows">
                         <div class="clock">
+                          <p class="priority">5</p>
                           <i class="fas fa-clock"></i>
-                          <p class="time-created"></p>
+                          <p class="time-created">06:30</p>
                         </div>
                         <div class="arr">
                           <i class="fas fa-chevron-up"></i>
@@ -109,13 +116,50 @@
                           <i class="fas fa-pencil-alt"></i>
                         </div>
                       </div>
+                      <dialog class="pencil create">
+                        <form action="">
+                          <div class="task-heading">
+                            <h2>Edit task</h2>
+                            <i class="fas fa-xmark"></i>
+                          </div>
+                          <div class="inputbox">
+                            <input type="text" placeholder="Name" />
+                          </div>
+                          <div class="inputbox num">
+                            <label for="priority7"
+                              >How important is this?</label
+                            >
+                            <input type="number" id="priority7" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="start-time7"
+                              >At what time does it start?</label
+                            >
+                            <input type="time" id="start-time7" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="end-time7"
+                              >At what time does it end?</label
+                            >
+                            <input type="time" id="end-time7" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="reminder7">Set a reminder.</label>
+                            <input type="time" id="reminder7" class="rem" />
+                          </div>
+                          <div class="inputbox">
+                            <button class="go">SAVE</button>
+                          </div>
+                        </form>
+                      </dialog>
                     </div>
                     <div class="ex-list">
                       <li>
-                        <label for=""><input type="checkbox" /></label>Task 1
+                        <label for=""><input type="checkbox" />Task 2</label>
                       </li>
                       <div class="arrows">
                         <div class="clock">
+                          <p class="priority"></p>
                           <i class="fas fa-clock"></i>
                           <p class="time-created"></p>
                         </div>
@@ -126,13 +170,50 @@
                           <i class="fas fa-pencil-alt"></i>
                         </div>
                       </div>
+                      <dialog class="pencil create">
+                        <form action="">
+                          <div class="task-heading">
+                            <h2>Edit task</h2>
+                            <i class="fas fa-xmark"></i>
+                          </div>
+                          <div class="inputbox">
+                            <input type="text" placeholder="Name" />
+                          </div>
+                          <div class="inputbox num">
+                            <label for="priority8"
+                              >How important is this?</label
+                            >
+                            <input type="number" id="priority8" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="start-time8"
+                              >At what time does it start?</label
+                            >
+                            <input type="time" id="start-time8" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="end-time8"
+                              >At what time does it end?</label
+                            >
+                            <input type="time" id="end-time8" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="reminder8">Set a reminder.</label>
+                            <input type="time" id="reminder8 " class="rem" />
+                          </div>
+                          <div class="inputbox">
+                            <button class="go">SAVE</button>
+                          </div>
+                        </form>
+                      </dialog>
                     </div>
                     <div class="ex-list">
                       <li>
-                        <label for=""><input type="checkbox" /></label>Task 1
+                        <label for=""><input type="checkbox" />Task 3</label>
                       </li>
                       <div class="arrows">
                         <div class="clock">
+                          <p class="priority"></p>
                           <i class="fas fa-clock"></i>
                           <p class="time-created"></p>
                         </div>
@@ -143,13 +224,50 @@
                           <i class="fas fa-pencil-alt"></i>
                         </div>
                       </div>
+                      <dialog class="pencil create">
+                        <form action="">
+                          <div class="task-heading">
+                            <h2>Edit task</h2>
+                            <i class="fas fa-xmark"></i>
+                          </div>
+                          <div class="inputbox">
+                            <input type="text" placeholder="Name" />
+                          </div>
+                          <div class="inputbox num">
+                            <label for="priority9"
+                              >How important is this?</label
+                            >
+                            <input type="number" id="priority9" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="start-time9"
+                              >At what time does it start?</label
+                            >
+                            <input type="time" id="start-time9" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="end-time9"
+                              >At what time does it end?</label
+                            >
+                            <input type="time" id="end-time9" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="reminder9 ">Set a reminder. </label>
+                            <input type="time" id="reminder9 " class="rem" />
+                          </div>
+                          <div class="inputbox">
+                            <button class="go">SAVE</button>
+                          </div>
+                        </form>
+                      </dialog>
                     </div>
                     <div class="ex-list">
                       <li>
-                        <label for=""><input type="checkbox" /></label>Task 1
+                        <label for=""><input type="checkbox" />Task 4</label>
                       </li>
                       <div class="arrows">
                         <div class="clock">
+                          <p class="priority"></p>
                           <i class="fas fa-clock"></i>
                           <p class="time-created"></p>
                         </div>
@@ -160,13 +278,50 @@
                           <i class="fas fa-pencil-alt"></i>
                         </div>
                       </div>
+                      <dialog class="pencil create">
+                        <form action="">
+                          <div class="task-heading">
+                            <h2>Edit task</h2>
+                            <i class="fas fa-xmark"></i>
+                          </div>
+                          <div class="inputbox">
+                            <input type="text" placeholder="Name" />
+                          </div>
+                          <div class="inputbox num">
+                            <label for="priority10"
+                              >How important is this?</label
+                            >
+                            <input type="number" id="priority10" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="start-time10"
+                              >At what time does it start?</label
+                            >
+                            <input type="time" id="start-time10" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="end-time10"
+                              >At what time does it end?</label
+                            >
+                            <input type="time" id="end-time10" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="reminder1">Set a reminder. </label>
+                            <input type="time" id="reminder1" class="rem" />
+                          </div>
+                          <div class="inputbox">
+                            <button class="go">SAVE</button>
+                          </div>
+                        </form>
+                      </dialog>
                     </div>
                     <div class="ex-list">
                       <li>
-                        <label for=""><input type="checkbox" /></label>Task 1
+                        <label for=""><input type="checkbox" />Task 5</label>
                       </li>
                       <div class="arrows">
                         <div class="clock">
+                          <p class="priority"></p>
                           <i class="fas fa-clock"></i>
                           <p class="time-created"></p>
                         </div>
@@ -177,6 +332,42 @@
                           <i class="fas fa-pencil-alt"></i>
                         </div>
                       </div>
+                      <dialog class="pencil create">
+                        <form action="">
+                          <div class="task-heading">
+                            <h2>Edit task</h2>
+                            <i class="fas fa-xmark"></i>
+                          </div>
+                          <div class="inputbox">
+                            <input type="text" placeholder="Name" />
+                          </div>
+                          <div class="inputbox num">
+                            <label for="priority6"
+                              >How important is this?</label
+                            >
+                            <input type="number" id="priority6" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="start-time6"
+                              >At what time does it start?</label
+                            >
+                            <input type="time" id="start-time6" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="end-time6"
+                              >At what time does it end?</label
+                            >
+                            <input type="time" id="end-time6" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="reminder6">Set a reminder. </label>
+                            <input type="time" id="reminder6 " class="rem" />
+                          </div>
+                          <div class="inputbox">
+                            <button class="go">SAVE</button>
+                          </div>
+                        </form>
+                      </dialog>
                     </div>
                   </ul>
                   <button class="btn two" id="add-task">
@@ -187,27 +378,30 @@
                     <form action="">
                       <div class="task-heading"><h2>Add a new task</h2></div>
                       <div class="inputbox">
-                        <input type="text" />
-                        <span>Name</span>
+                        <input type="text" placeholder="Name" />
                       </div>
                       <div class="inputbox num">
-                        <label for="#priority3">How important is this?</label>
+                        <label for="priority3">How important is this?</label>
                         <input type="number" id="priority3" />
                       </div>
                       <div class="inputbox">
-                        <label for="#start-time3">At what time does it start?</label>
+                        <label for="#start-time3"
+                          >At what time does it start?</label
+                        >
                         <input type="time" id="start-time3" />
                       </div>
                       <div class="inputbox">
-                        <label for="#end-time3">At what time does it end?</label>
+                        <label for="#end-time3"
+                          >At what time does it end?</label
+                        >
                         <input type="time" id="end-time3" />
                       </div>
                       <div class="inputbox">
-                        <label for="reminder3">Set a reminder.</label>
-                        <input type="time" id="reminder3" />
+                        <label for="reminder3">Set a reminder. </label>
+                        <input type="time" id="reminder3 " class="rem" />
                       </div>
                       <div class="inputbox">
-                        <button class="go">CREATE</button>
+                        <button class="go">SAVE</button>
                       </div>
                     </form>
                   </dialog>
@@ -220,7 +414,306 @@
               </div> -->
               <div class="deets">
                 <h3>Shopping</h3>
-                <p>30/11/24</p>
+                <div class="dts">
+                  <p>30/11/24</p>
+                  <p class="pr-time">2:23 PM</p>
+                </div>
+              </div>
+              <div class="ex-deets">
+                <div class="ex-heading">
+                  <i class="fas fa-chevron-left"></i>
+                  <h2 contenteditable="true">Shopping</h2>
+                </div>
+                <div class="ex-brief">
+                  <p contenteditable="true">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Quidem nihil quo ea quae? Veniam ab vero sed excepturi
+                    numquam, odit eligendi. Reiciendis odit rerum cumque
+                    delectus ipsam fuga asperiores quasi neque ipsa eos sequi,
+                    dolores maiores nobis voluptates adipisci consectetur nam
+                    quis voluptatum optio vitae corrupti. Nostrum quaerat dolor
+                    suscipit.
+                    <i class="fas fa-pencil-alt"></i>
+                  </p>
+                </div>
+                <div class="ex-lists">
+                  <h2>Tasks</h2>
+                  <ul>
+                    <div class="ex-list">
+                      <li>
+                        <label for=""><input type="checkbox" />Task 1</label>
+                      </li>
+                      <div class="arrows">
+                        <div class="clock">
+                          <p class="priority"></p>
+                          <i class="fas fa-clock"></i>
+                          <p class="time-created"></p>
+                        </div>
+                        <div class="arr">
+                          <i class="fas fa-chevron-up"></i>
+                          <i class="fas fa-chevron-down"></i>
+                          <i class="fas fa-trash-alt"></i>
+                          <i class="fas fa-pencil-alt"></i>
+                        </div>
+                      </div>
+                      <dialog class="pencil create">
+                        <form action="">
+                          <div class="task-heading">
+                            <h2>Edit task</h2>
+                            <i class="fas fa-xmark"></i>
+                          </div>
+                          <div class="inputbox">
+                            <input type="text" placeholder="Name" />
+                          </div>
+                          <div class="inputbox num">
+                            <label for="prior">How important is this?</label>
+                            <input type="number" id="prior" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="starttime">At what time does it start?</label>
+                            <input type="time" id="starttime" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="endt">At what time does it end?</label>
+                            <input type="time" id="endt" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="rem">Set a reminder.</label>
+                            <input type="time" id="rem" class="rem" />
+                          </div>
+                          <div class="inputbox">
+                            <button class="go">SAVE</button>
+                          </div>
+                        </form>
+                      </dialog>
+                    </div>
+                    <div class="ex-list">
+                      <li>
+                        <label for=""><input type="checkbox" />Task 2</label>
+                      </li>
+                      <div class="arrows">
+                        <div class="clock">
+                          <p class="priority"></p>
+                          <i class="fas fa-clock"></i>
+                          <p class="time-created"></p>
+                        </div>
+                        <div class="arr">
+                          <i class="fas fa-chevron-up"></i>
+                          <i class="fas fa-chevron-down"></i>
+                          <i class="fas fa-trash-alt"></i>
+                          <i class="fas fa-pencil-alt"></i>
+                        </div>
+                      </div>
+                      <dialog class="pencil create">
+                        <form action="">
+                          <div class="task-heading">
+                            <h2>Edit task</h2>
+                            <i class="fas fa-xmark"></i>
+                          </div>
+                          <div class="inputbox">
+                            <input type="text" placeholder="Name" />
+                          </div>
+                          <div class="inputbox num">
+                            <label for="prior1">How important is this?</label>
+                            <input type="number" id="prior1" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="starttime1">At what time does it start?</label>
+                            <input type="time" id="starttime1" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="endt1">At what time does it end?</label>
+                            <input type="time" id="endt1" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="rem1">Set a reminder.</label>
+                            <input type="time" id="rem1" class="rem" />
+                          </div>
+                          <div class="inputbox">
+                            <button class="go">SAVE</button>
+                          </div>
+                        </form>
+                      </dialog>
+                    </div>
+                    <div class="ex-list">
+                      <li>
+                        <label for=""><input type="checkbox" />Task 3</label>
+                      </li>
+                      <div class="arrows">
+                        <div class="clock">
+                          <p class="priority"></p>
+                          <i class="fas fa-clock"></i>
+                          <p class="time-created"></p>
+                        </div>
+                        <div class="arr">
+                          <i class="fas fa-chevron-up"></i>
+                          <i class="fas fa-chevron-down"></i>
+                          <i class="fas fa-trash-alt"></i>
+                          <i class="fas fa-pencil-alt"></i>
+                        </div>
+                      </div>
+                      <dialog class="pencil create">
+                        <form action="">
+                          <div class="task-heading">
+                            <h2>Edit task</h2>
+                            <i class="fas fa-xmark"></i>
+                          </div>
+                          <div class="inputbox">
+                            <input type="text" placeholder="Name" />
+                          </div>
+                          <div class="inputbox num">
+                            <label for="prior2">How important is this?</label>
+                            <input type="number" id="prior2" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="starttime2">At what time does it start?</label>
+                            <input type="time" id="starttime2" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="endt2">At what time does it end?</label>
+                            <input type="time" id="endt2" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="rem2">Set a reminder.</label>
+                            <input type="time" id="rem2" class="rem" />
+                          </div>
+                          <div class="inputbox">
+                            <button class="go">SAVE</button>
+                          </div>
+                        </form>
+                      </dialog>
+                    </div>
+                    <div class="ex-list">
+                      <li>
+                        <label for=""><input type="checkbox" />Task 4</label>
+                      </li>
+                      <div class="arrows">
+                        <div class="clock">
+                          <p class="priority"></p>
+                          <i class="fas fa-clock"></i>
+                          <p class="time-created"></p>
+                        </div>
+                        <div class="arr">
+                          <i class="fas fa-chevron-up"></i>
+                          <i class="fas fa-chevron-down"></i>
+                          <i class="fas fa-trash-alt"></i>
+                          <i class="fas fa-pencil-alt"></i>
+                        </div>
+                      </div>
+                      <dialog class="pencil create">
+                        <form action="">
+                          <div class="task-heading">
+                            <h2>Edit task</h2>
+                            <i class="fas fa-xmark"></i>
+                          </div>
+                          <div class="inputbox">
+                            <input type="text" placeholder="Name" />
+                          </div>
+                          <div class="inputbox num">
+                            <label for="prior3">How important is this?</label>
+                            <input type="number" id="prior3" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="starttime3">At what time does it start?</label>
+                            <input type="time" id="starttime3" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="endt3">At what time does it end?</label>
+                            <input type="time" id="endt3" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="rem3">Set a reminder.</label>
+                            <input type="time" id="rem3" class="rem" />
+                          </div>
+                          <div class="inputbox">
+                            <button class="go">SAVE</button>
+                          </div>
+                        </form>
+                      </dialog>
+                    </div>
+                    <div class="ex-list">
+                      <li>
+                        <label for=""><input type="checkbox" />Task 5</label>
+                      </li>
+                      <div class="arrows">
+                        <div class="clock">
+                          <p class="priority"></p>
+                          <i class="fas fa-clock"></i>
+                          <p class="time-created"></p>
+                        </div>
+                        <div class="arr">
+                          <i class="fas fa-chevron-up"></i>
+                          <i class="fas fa-chevron-down"></i>
+                          <i class="fas fa-trash-alt"></i>
+                          <i class="fas fa-pencil-alt"></i>
+                        </div>
+                      </div>
+                      <dialog class="pencil create">
+                        <form action="">
+                          <div class="task-heading">
+                            <h2>Edit task</h2>
+                            <i class="fas fa-xmark"></i>
+                          </div>
+                          <div class="inputbox">
+                            <input type="text" placeholder="Name" />
+                          </div>
+                          <div class="inputbox num">
+                            <label for="prior4">How important is this?</label>
+                            <input type="number" id="prior4" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="starttime4">At what time does it start?</label>
+                            <input type="time" id="starttime4" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="endt4">At what time does it end?</label>
+                            <input type="time" id="endt4" />
+                          </div>
+                          <div class="inputbox">
+                            <label for="rem4">Set a reminder.</label>
+                            <input type="time" id="rem4" class="rem" />
+                          </div>
+                          <div class="inputbox">
+                            <button class="go">SAVE</button>
+                          </div>
+                        </form>
+                      </dialog>
+                    </div>
+                  </ul>
+                  <button class="btn two add-task">
+                    <i class="fas fa-plus"></i>
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                  <dialog id="task-form" class="create">
+                    <form action="">
+                      <div class="task-heading"><h2>Add a new task</h2></div>
+                      <div class="inputbox">
+                        <input type="text" placeholder="Name" />
+                      </div>
+                      <div class="inputbox num">
+                        <label for="priority4">How important is this?</label>
+                        <input type="number" id="priority4" />
+                      </div>
+                      <div class="inputbox">
+                        <label for="start-time4"
+                          >At what time does it start?</label
+                        >
+                        <input type="time" id="start-time4" />
+                      </div>
+                      <div class="inputbox">
+                        <label for="end-time4">At what time does it end?</label>
+                        <input type="time" id="end-time4" />
+                      </div>
+                      <div class="inputbox">
+                        <label for="reminder4">Set a reminder. </label>
+                        <input type="time" id="reminder4" />
+                      </div>
+                      <div class="inputbox">
+                        <button class="go">CREATE</button>
+                      </div>
+                    </form>
+                  </dialog>
+                </div>
               </div>
             </div>
             <button class="btn one" id="add">
@@ -241,28 +734,25 @@
             <dialog id="p-form" class="create">
               <form action="">
                 <div class="pf-heading"><h2>Create a new project</h2></div>
-                <div class="inputbox">
-                  <input type="text" />
-                  <span>Name</span>
-                </div>
+                <div class="inputbox"><input type="texplaceholder="Name"t"</div>
                 <div class="inputbox num">
-                  <label for="#priority">How important is this?</label>
+                  <label for="priority">How important is this?</label>
                   <input type="number" id="priority" />
                 </div>
                 <div class="inputbox">
-                  <label for="#start-date">When does it commence?</label>
+                  <label for="start-date">When does it commence?</label>
                   <input type="date" id="start-date" />
                 </div>
                 <div class="inputbox">
-                  <label for="#start-time">At what time does it start?</label>
+                  <label for="start-time">At what time does it start?</label>
                   <input type="time" id="start-time" />
                 </div>
                 <div class="inputbox">
-                  <label for="#end-date">When does it end?</label>
+                  <label for="end-date">When does it end?</label>
                   <input type="date" id="end-date" />
                 </div>
                 <div class="inputbox">
-                  <label for="#end-time">At what time does it end?</label>
+                  <label for="end-time">At what time does it end?</label>
                   <input type="time" id="end-time" />
                 </div>
                 <div class="inputbox">
@@ -270,35 +760,32 @@
                   <input type="time" id="reminder" />
                 </div>
                 <div class="inputbox">
-                  <button class="go">CREATE</button>
+                  <button class="go" id="prBtn">CREATE</button>
                 </div>
               </form>
             </dialog>
             <dialog id="c-form" class="create">
               <form action="">
                 <div class="cas-heading"><h2>Create a new casual</h2></div>
-                <div class="inputbox">
-                  <input type="text" />
-                  <span>Name</span>
-                </div>
+                <div class="inputbox"><input type="texplaceholder="Name"t"</div>
                 <div class="inputbox num">
-                  <label for="#priority2">How important is this?</label>
+                  <label for="priority2">How important is this?</label>
                   <input type="number" id="priority2" />
                 </div>
                 <div class="inputbox">
-                  <label for="#start-date2">When does it commence?</label>
+                  <label for="start-date2">When does it commence?</label>
                   <input type="date" id="start-date2" />
                 </div>
                 <div class="inputbox">
-                  <label for="#start-time2">At what time does it start?</label>
+                  <label for="start-time2">At what time does it start?</label>
                   <input type="time" id="start-time2" />
                 </div>
                 <div class="inputbox">
-                  <label for="#end-date2">When does it end?</label>
+                  <label for="end-date2">When does it end?</label>
                   <input type="date" id="end-date2" />
                 </div>
                 <div class="inputbox">
-                  <label for="#end-time2">At what time does it end?</label>
+                  <label for="end-time2">At what time does it end?</label>
                   <input type="time" id="end-time2" />
                 </div>
                 <div class="inputbox">
@@ -306,7 +793,7 @@
                   <input type="time" id="reminder2" />
                 </div>
                 <div class="inputbox">
-                  <button class="go">CREATE</button>
+                  <button class="go" id="caBtn">CREATE</button>
                 </div>
               </form>
             </dialog>
@@ -339,6 +826,32 @@
               <div class="list"></div>
               <div class="list"></div>
             </div>
+            <!-- <div class="casual">
+              <div class="marker">
+                <div class="dots">
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </div>
+              </div>
+              <div class="list"></div>
+              <div class="list"></div>
+              <div class="list"></div>
+              <div class="list"></div>
+            </div>
+            <div class="casual">
+              <div class="marker">
+                <div class="dots">
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </div>
+              </div>
+              <div class="list"></div>
+              <div class="list"></div>
+              <div class="list"></div>
+              <div class="list"></div>
+            </div> -->
           </div>
         </div>
       </div>
