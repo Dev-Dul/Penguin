@@ -1,5 +1,7 @@
 import "./styles.css";
+import { format } from "date-fns";
 import "@fortawesome/fontawesome-free/css/all.css";
+
 
 const prBtn = document.getElementById("prBtn");
 const caBtn = document.getElementById("caBtn"); 
@@ -97,7 +99,6 @@ const displayController = (function(){
           prj.classList.remove("maximize");
         });
         
-        
         // Call editBtns function to update the details on the screen
         editBtns(project);
         updateEngine.saveButtons(project);
@@ -106,6 +107,7 @@ const displayController = (function(){
         exdeets[index].classList.add("active");
       });
     });
+
 
     const addTask = document.getElementById("add-task");
 
@@ -145,7 +147,6 @@ const displayController = (function(){
         let pencils = parent.querySelectorAll(".arr i:last-of-type");
         let exlist = parent.querySelectorAll(".ex-list");
         let parDialogs = parent.querySelectorAll(".ex-list dialog");
-        console.log(parDialogs);
         const closepencils = parent.querySelectorAll(".pencil .task-heading i");
 
 
@@ -155,7 +156,7 @@ const displayController = (function(){
               pDialog.close();
             });
 
-            let taskName =  exlist[index].querySelector("li > label").textContent;
+            let taskName =  exlist[index].querySelector("li > label > span").textContent;
             let taskPriority =  exlist[index].querySelector(".priority").textContent;
             let taskTime =  exlist[index].querySelector(".time-created").textContent;
             const values = [taskName, taskPriority, taskTime];
@@ -175,7 +176,9 @@ const displayController = (function(){
           });
         });
     }
-        
+    
+    return { editBtns };
+    
 })();
 
 
@@ -204,15 +207,54 @@ const factory = (function(){
         projectArr.push(obj);
     }
 
-    function projectEngine(){
-        let major = document.getElementById("major");
-        let proj = document.querySelector(".projects .project:last-of-type");
-        let clone  = proj.cloneNode(true);
-        let h2 = clone.querySelector(".ex-heading h2");
-        h2.textContent = "Title";
-        h2.style.opacity = "0.3";
+    function addClick(element) {
+      let prjs = document.querySelectorAll(".project");
+      let prDeets = element.querySelector(".ex-deets");
+      let prDeet = element.querySelector(".deets");
+      let collapse = element.querySelector(".ex-heading > i:first-child");
+      element.addEventListener("click", () => {
+        prjs.forEach((prj) => {
+          prj.classList.remove("maximize");
+        });
 
-        proj.insertAdjacentElement('afterend', clone);
+        // Call editBtns function to update the details on the screen
+        displayController.editBtns(element);
+        updateEngine.saveButtons(element);
+        prDeet.classList.add("close");
+        element.classList.add("maximize");
+        prDeets.classList.add("active");
+      });
+
+      collapse.addEventListener("click", (event) => {
+          event.stopPropagation();
+          prDeets.classList.remove("active");
+          element.classList.remove("maximize");
+          prDeet.classList.remove("close");
+      })
+    }
+
+    function projectEngine(){
+      let proj = document.querySelector(".projects .project:last-of-type");
+      let clone  = proj.cloneNode(true);
+      let h2 = clone.querySelector(".ex-heading h2");
+      let titleTime = clone.querySelector(".ex-heading .title p");
+      let h3 = clone.querySelector(".deets > h3");
+      let prtime = clone.querySelector(".pr-time");
+      const date = new Date();
+      const formattedDate = format(date, "hh:mm a, MMM d, yyyy");
+      const timeArr = [titleTime, prtime];
+
+      for(let i = 0; i < timeArr.length; i++){
+        timeArr[i].textContent = formattedDate;
+      }
+      
+      h2.textContent = "Title";
+      h2.style.opacity = "0.3";
+      h3.textContent = "Title";
+      let lastIndex = document.querySelectorAll(".project").length - 1;
+
+      proj.insertAdjacentElement('afterend', clone);
+      addClick(clone);
     }
 
     function casualEngine(){
@@ -223,7 +265,23 @@ const factory = (function(){
     }
 
     function listEngine(){
+      let prototype = document.querySelector(".ex-lists .ex-list:first-of-type");
+      let last = document.querySelector(".ex-lists .ex-list:last-of-type");
+      let exClone = prototype.cloneNode(true);
+      let ex = prototype.parentElement.parentElement;
+      let exdialog = ex.children[ex.children.length -1 ];
 
+      let exInputs = exdialog.querySelectorAll('input[type="text"], input[type="number"], input.rem');
+      let exName = exClone.querySelector("li label span");
+      let exPriority = exClone.querySelector(".priority");
+      let exRem = exClone.querySelector(".time-created");
+      let vals = [exName, exPriority, exRem];
+
+      for(let i = 0; i < exInputs.length; i++){
+        vals[i].textContent = exInputs[i].value;
+      }
+
+      last.insertAdjacentElement("afterend", exClone);
     }
 
     function createlist(name, priority, reminder){
@@ -231,17 +289,43 @@ const factory = (function(){
         projectArr.push(obj);
     }
 
-    return{ createProject, createlist, projectEngine, casualEngine };
+    return{ createProject, createlist, projectEngine, casualEngine, listEngine };
 })();
 
 const updateEngine = (function(){
-    const pencilDialog = document.querySelectorAll(".ex-list dialog");
+    let newTask = document.querySelectorAll(".ex-lists > dialog button");
+    let deleteTask = document.querySelectorAll(".arr .fa-trash-alt");
+    let myform = document.querySelectorAll("form");
+    myform.forEach(form => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      console.log("form is being submitted");
+    })
+  })
+      
+
     prBtn.addEventListener("click", () => {
       factory.projectEngine();
     });
 
     caBtn.addEventListener("click", () => {
       factory.casualEngine();
+    });
+
+    newTask.forEach(newt => {
+      newt.addEventListener("click", () => {
+        factory.listEngine();
+      });
+    });
+
+    deleteTask.forEach(del =>{
+      let parEx = del.closest(".ex-list");
+      del.addEventListener("click", () => {
+        parEx.classList.add("delete");
+        setTimeout(() => {
+          parEx.remove();
+        }, 2000);
+      });
     });
 
     function saveButtons(par){
@@ -254,7 +338,7 @@ const updateEngine = (function(){
             const exlist = prj.querySelectorAll(".ex-list");
             console.log(exlist);
   
-            let tname = exlist[index].querySelector("li > label");
+            let tname = exlist[index].querySelector("li > label > span");
             let tpriority = exlist[index].querySelector(".priority");
             let tTime = exlist[index].querySelector(".time-created");
             const values = [tname, tpriority, tTime];
@@ -268,6 +352,7 @@ const updateEngine = (function(){
         });
       });
     }
+
 
     return { saveButtons };
 })();
