@@ -295,6 +295,7 @@ const factory = (function(){
 const updateEngine = (function(){
     let newTask = document.querySelectorAll(".ex-lists > dialog button");
     let deleteTask = document.querySelectorAll(".arr .fa-trash-alt");
+    let deleteProject = document.querySelectorAll(".dts .fa-trash-alt");
     let myform = document.querySelectorAll("form");
     myform.forEach(form => {
     form.addEventListener("submit", (event) => {
@@ -327,6 +328,17 @@ const updateEngine = (function(){
         }, 2000);
       });
     });
+
+    deleteProject.forEach(pro => {
+      let parPro = pro.closest(".project");
+      pro.addEventListener("click", (event) => {
+        event.stopPropagation();
+        parPro.classList.add("delete");
+        setTimeout(() => {
+          parPro.remove();
+        }, 2000);
+      })
+    })
 
     function saveButtons(par){
       const saveBtns = par.querySelectorAll(".pencil form .inputbox button");
