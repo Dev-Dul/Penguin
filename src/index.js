@@ -14,7 +14,9 @@ const displayController = (function(){
     const expand = document.getElementById("expand"),
       bars = document.querySelectorAll(".bar"),
       h2Arr = document.querySelectorAll(".bar > h2"),
-      add = document.querySelector("#add"),
+      add = document.getElementById("add"),
+      addTasks = document.querySelectorAll(".ex-lists > button"),
+      taskDialog = document.querySelectorAll(".ex-lists > dialog"),
       dialog = document.getElementById("dialog"),
       dialogs = document.getElementsByTagName("dialog"),
       cproject = document.querySelector("#project"),
@@ -54,33 +56,58 @@ const displayController = (function(){
       });
     });
 
+    let addToggle = true;
 
-    let toggle = true;
+
     add.addEventListener("click", () => {
-      if (toggle) {
+      if(addToggle){
         setTimeout(() => {
           dialog.show();
-        }, 1000);
-        document.body.querySelector(".overlay").classList.add("active");
-        add.querySelector("i:first-child").style.display = "none";
-        add.querySelector("i:nth-child(2)").style.display = "block";
-      } else {
-        Array.from(dialogs).forEach((dialog) => {
+        }, 2000);
+        document.querySelector(".overlay").classList.add("active");
+        changeBtn();
+      }else{
+        setTimeout(() => {
           dialog.close();
-        });
-        document.body.querySelector(".overlay").classList.remove("active");
-        add.querySelector("i:first-child").style.display = "block";
-        add.querySelector("i:nth-child(2)").style.display = "none";
+        }, 200);
+        document.querySelector(".overlay").classList.remove("active");
+        changeBtn(1);
       }
+      
+        addToggle = !addToggle;
 
-      toggle = !toggle;
-    });
+    })
+
+
+    let toggle = true;
+    addTasks.forEach((elem, index) => {
+      let dt = elem.closest(".ex-deets");
+      let over = dt.previousElementSibling.previousElementSibling;
+      elem.addEventListener("click", () => {
+        if (toggle) {
+          setTimeout(() => {
+            taskDialog[index].show();
+          }, 1000);
+          over.classList.add("active");
+          elem.querySelector("i:first-child").style.display = "none";
+          elem.querySelector("i:nth-child(2)").style.display = "block";
+        } else {
+          Array.from(dialogs).forEach((dialog) => {
+            dialog.close();
+          });
+          over.classList.remove("active");
+          elem.querySelector("i:first-child").style.display = "block";
+          elem.querySelector("i:nth-child(2)").style.display = "none";
+        }
+
+        toggle = !toggle;
+      });
+    })
 
     cproject.addEventListener("click", () => {
       Array.from(dialogs).forEach((dialog) => {
         dialog.close();
       });
-
       document.querySelector("#p-form").show();
     });
 
@@ -88,7 +115,6 @@ const displayController = (function(){
       Array.from(dialogs).forEach((dialog) => {
         dialog.close();
       });
-
       document.querySelector("#c-form").show();
     });
 
@@ -142,18 +168,41 @@ const displayController = (function(){
         });
     });
 
+    // hrs.forEach(hr => {
+    //   hr.addEventListener()
+    // })
+
+  
+
+    function changeBtn(def = 0){
+
+      if(def === 1){
+          add.querySelector("i:first-child").style.display = "block";
+          add.querySelector("i:nth-child(2)").style.display = "none";
+      }else{
+          add.querySelector("i:first-child").style.display = "none";
+          add.querySelector("i:nth-child(2)").style.display = "block";
+      }
+    }
 
     function editBtns(parent){
         let pencils = parent.querySelectorAll(".arr i:last-of-type");
+        console.log(pencils);
         let exlist = parent.querySelectorAll(".ex-list");
         let parDialogs = parent.querySelectorAll(".ex-list dialog");
+        // console.log(parDialogs);
+        let checks = parent.querySelectorAll(".ex-list input[type='checkbox']");
+        let hrs = parent.querySelectorAll(".ex-list > hr");
         const closepencils = parent.querySelectorAll(".pencil .task-heading i");
 
-
+        let i = 0;
         pencils.forEach((pencil, index) => {
           pencil.addEventListener("click", () => {
             parDialogs.forEach((pDialog) => {
               pDialog.close();
+              i++;
+              // console.log(i);
+              // console.log(pencil);
             });
 
             let taskName =  exlist[index].querySelector("li > label > span").textContent;
@@ -175,9 +224,19 @@ const displayController = (function(){
             parDialogs[index].close();
           });
         });
+
+         checks.forEach((check, index) => {
+          check.addEventListener("change", (event) => {
+            if(event.target.checked){
+              hrs[index].classList.add("active");
+            }else{
+              hrs[index].classList.remove("active");
+            }
+        })
+    })
     }
     
-    return { editBtns };
+    return { editBtns, changeBtn };
     
 })();
 
@@ -233,7 +292,7 @@ const factory = (function(){
       })
     }
 
-    function projectEngine(){
+    function projectEngine(text){
       let proj = document.querySelector(".projects .project:last-of-type");
       let clone  = proj.cloneNode(true);
       let h2 = clone.querySelector(".ex-heading h2");
@@ -248,13 +307,13 @@ const factory = (function(){
         timeArr[i].textContent = formattedDate;
       }
       
-      h2.textContent = "Title";
-      h2.style.opacity = "0.3";
-      h3.textContent = "Title";
+      h2.textContent = text;
+      h3.textContent = text;
       let lastIndex = document.querySelectorAll(".project").length - 1;
-
-      proj.insertAdjacentElement('afterend', clone);
+      
+      updateEngine.addEvents(clone);
       addClick(clone);
+      proj.insertAdjacentElement('afterend', clone);
     }
 
     function casualEngine(){
@@ -264,12 +323,12 @@ const factory = (function(){
         cas.insertAdjacentElement('afterend', clone);
     }
 
-    function listEngine(){
-      let prototype = document.querySelector(".ex-lists .ex-list:first-of-type");
-      let last = document.querySelector(".ex-lists .ex-list:last-of-type");
+    function listEngine(parent){
+      let prototype = parent.querySelector(".ex-list:first-of-type");
+      let last = parent.querySelector(".ex-list:last-of-type");
       let exClone = prototype.cloneNode(true);
-      let ex = prototype.parentElement.parentElement;
-      let exdialog = ex.children[ex.children.length -1 ];
+      let delTask = exClone.querySelector(".arr .fa-trash-alt");
+      let exdialog = parent.children[parent.children.length -1];  
 
       let exInputs = exdialog.querySelectorAll('input[type="text"], input[type="number"], input.rem');
       let exName = exClone.querySelector("li label span");
@@ -280,6 +339,15 @@ const factory = (function(){
       for(let i = 0; i < exInputs.length; i++){
         vals[i].textContent = exInputs[i].value;
       }
+
+      delTask.addEventListener("click", () => {
+        let elem = delTask.closest(".ex-list");
+        elem.classList.add("delete");
+        setTimeout(() => {
+          elem.remove();
+        }, 2000);
+      });
+
 
       last.insertAdjacentElement("afterend", exClone);
     }
@@ -297,25 +365,34 @@ const updateEngine = (function(){
     let deleteTask = document.querySelectorAll(".arr .fa-trash-alt");
     let deleteProject = document.querySelectorAll(".dts .fa-trash-alt");
     let myform = document.querySelectorAll("form");
+
     myform.forEach(form => {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      console.log("form is being submitted");
     })
   })
       
 
     prBtn.addEventListener("click", () => {
-      factory.projectEngine();
+      let pForm = document.querySelector("#p-form");
+      let text = pForm.querySelector("input[type='text']");
+      factory.projectEngine(text.value);
+      pForm.close();
+      document.querySelector(".overlay").classList.remove("active");
+      displayController.changeBtn(1);
     });
 
     caBtn.addEventListener("click", () => {
       factory.casualEngine();
+      document.querySelector("#c-form").close();
+      document.querySelector(".overlay").classList.remove("active");
+      displayController.changeBtn(1);
     });
 
     newTask.forEach(newt => {
+      let npar = newt.closest(".ex-lists");
       newt.addEventListener("click", () => {
-        factory.listEngine();
+      factory.listEngine(npar);
       });
     });
 
@@ -328,6 +405,59 @@ const updateEngine = (function(){
         }, 2000);
       });
     });
+    
+    function addEvents(element){
+        let newBtns = document.querySelectorAll(".ex-lists > dialog button");
+        let el = element.querySelector(".ex-list");
+        let dels = element.querySelectorAll(".arr .fa-trash-alt");
+        dels.forEach(del => {
+          del.addEventListener("click", () => {
+            el.classList.add("delete");
+            setTimeout(() => {
+              el.remove();
+            }, 2000);
+          });
+        });
+
+        let evForms = element.querySelectorAll("form");
+        let toggle = true;
+        let over = element.querySelector(".overlay");
+        let taskBtn = element.querySelector(".ex-lists > button");
+        console.log(taskBtn);
+        let dg = element.querySelector(".ex-lists > dialog");
+
+        evForms.forEach(ev => {
+          ev.addEventListener("submit", (event) => {
+            event.preventDefault();
+          });
+        });
+
+        taskBtn.addEventListener("click", () => {
+          if (toggle) {
+            setTimeout(() => {
+              dg.show();
+            }, 1000);
+            over.classList.add("active");
+            taskBtn.querySelector("i:first-child").style.display = "none";
+            taskBtn.querySelector("i:nth-child(2)").style.display = "block";
+          } else {
+            dg.close();
+            over.classList.remove("active");
+            taskBtn.querySelector("i:first-child").style.display = "block";
+            taskBtn.querySelector("i:nth-child(2)").style.display = "none";
+          }
+
+          toggle = !toggle;
+        });
+
+        newBtns.forEach((newb) => {
+          let nbtn = newb.closest(".ex-lists");
+          newb.addEventListener("click", () => {
+            factory.listEngine(nbtn);
+          });
+        });
+
+    };
 
     deleteProject.forEach(pro => {
       let parPro = pro.closest(".project");
@@ -366,7 +496,7 @@ const updateEngine = (function(){
     }
 
 
-    return { saveButtons };
+    return { saveButtons, addEvents };
 })();
 
 const appEngine = (function(){

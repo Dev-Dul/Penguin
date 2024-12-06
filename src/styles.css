@@ -44,6 +44,10 @@ body{
     left: 10%;
 }
 
+.container.collapse .btn.two{
+    left: 15%;
+}
+
 .container > div{
     height: 100%;
     width: 100%;
@@ -479,8 +483,35 @@ h1{
     align-items: center;
     border: 1px solid;
     margin: 0.8rem 0;
+    position: relative;
     transition: all 0.8s ease;
     justify-content: space-between;
+}
+
+.ex-list hr{
+    position: absolute;
+    height: 1px;
+    background: black;
+    top: 48%;
+    left: 5%;
+    display: none;
+    margin: 0 auto;
+    opacity: 0;
+    transition: all 1.5s ease;
+}
+
+@keyframes hr {
+    from{
+        width: 0;
+    }to{
+        width: 80%;
+    }
+}
+
+.ex-list hr.active{
+    display: block;
+    opacity: 1;
+    animation: hr 1.5s ease forwards;
 }
 
 .ex-list.delete{
@@ -602,11 +633,12 @@ h1{
 
 .btn.two{
     left: 22%;
-    /* top: 50%; */
     bottom: 50px;
 }
 
 #dialog{
+    position: fixed;
+    margin: 0 auto;
     height: 100px;
     width: 200px;
     bottom: 110px;
@@ -630,6 +662,7 @@ h1{
 .option:first-of-type button{
     margin-top: 10px;
 }
+
 
 .create{
     height: 400px;
@@ -666,6 +699,7 @@ h1{
     height: 100%;
     width: 100%;
     outline: none;
+    text-transform: capitalize;
 }
 
 .create form .inputbox label{
