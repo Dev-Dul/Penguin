@@ -7,237 +7,287 @@ const prBtn = document.getElementById("prBtn");
 const caBtn = document.getElementById("caBtn"); 
 
 const displayController = (function(){
-    const container = document.getElementById("container");
-    const sidebar = document.getElementById("sidebar");
-    const collapse = document.getElementById("collapse");
-    const collapsetwo = document.querySelectorAll(".ex-heading > i:first-child");
-    const expand = document.getElementById("expand"),
-      bars = document.querySelectorAll(".bar"),
-      h2Arr = document.querySelectorAll(".bar > h2"),
-      add = document.getElementById("add"),
-      addTasks = document.querySelectorAll(".ex-lists > button"),
-      taskDialog = document.querySelectorAll(".ex-lists > dialog"),
-      dialog = document.getElementById("dialog"),
-      dialogs = document.getElementsByTagName("dialog"),
-      cproject = document.querySelector("#project"),
-      crCasual = document.querySelector("#casual"),
-      projects = document.querySelectorAll(".project"),
-      exdeets = document.querySelectorAll(".ex-deets"),
-      deets = document.querySelectorAll(".deets"),
-      taskForm = document.querySelector("#task-form");
+  const body = document.body;
+  const container = document.getElementById("container");
+  const sidebar = document.getElementById("sidebar");
+  const collapse = document.getElementById("collapse");
+  const collapsetwo = document.querySelectorAll(".ex-heading > i:first-child");
+  const expand = document.getElementById("expand"),
+    bars = document.querySelectorAll(".bar"),
+    h2Arr = document.querySelectorAll(".bar > h2"),
+    add = document.getElementById("add"),
+    addTasks = document.querySelectorAll(".ex-lists > button"),
+    taskDialog = document.querySelectorAll(".ex-lists > dialog"),
+    dialog = document.getElementById("dialog"),
+    dialogs = document.getElementsByTagName("dialog"),
+    cproject = document.querySelector("#project"),
+    crCasual = document.querySelector("#casual"),
+    projects = document.querySelectorAll(".project"),
+    exdeets = document.querySelectorAll(".ex-deets"),
+    deets = document.querySelectorAll(".deets"),
+    taskForm = document.querySelector("#task-form");
 
+  const dots = document.querySelectorAll(".dot");
+  const brs = document.querySelectorAll(".bar >*");
+  const exBrief = document.querySelectorAll(".ex-brief");
+  const titleH2 = document.querySelectorAll(".title > h2");
+  const exlistH2 = document.querySelectorAll(".ex-lists > h2");
+  const barH2 = document.querySelectorAll(".bar > h2");
+  const colorArr = ["#ffcfd2", "#8eecf5", "#d9ed92", "#76c893", "#e2ece9", "#ade8f4", "#ecf8f8", "#fec5bb", "#ffe5d9", "#d8f3dc", "#b7e4c7"];
 
-      collapse.addEventListener("click", () => {
-          container.classList.add("collapse");
-          collapse.classList.add("collapse");
-          sidebar.classList.add("collapse");
-          expand.style.display = "block";
-          bars.forEach((bar) => {
-            bar.classList.add("collapse");
-          });
+  function setColors(){
+    let index = Math.floor(Math.random() * colorArr.length);
+    let clr = colorArr[index];
 
-          h2Arr.forEach((h2) => {
-            h2.classList.add("collapse");
-          });
-     });
+    body.style.background = `linear-gradient( #fff 35%, ${clr} 100%)`;
 
-    expand.addEventListener("click", () => {
-      container.classList.remove("collapse");
-      collapse.classList.remove("collapse");
-      sidebar.classList.remove("collapse");
-      expand.style.display = "none";
-
-      bars.forEach((bar) => {
-        bar.classList.remove("collapse");
-      });
-
-      h2Arr.forEach((h2) => {
-        h2.classList.remove("collapse");
-      });
+    dots.forEach((dot) => {
+      dot.style.background = clr;
     });
 
-    let addToggle = true;
+    exBrief.forEach((exb) => {
+      exb.style.background = clr;
+    });
 
 
-    add.addEventListener("click", () => {
-      if(addToggle){
-        setTimeout(() => {
-          dialog.show();
-        }, 2000);
-        document.querySelector(".overlay").classList.add("active");
-        changeBtn();
-      }else{
-        setTimeout(() => {
-          dialog.close();
-        }, 200);
-        document.querySelector(".overlay").classList.remove("active");
-        changeBtn(1);
-      }
-      
-        addToggle = !addToggle;
+    brs.forEach((br) => {
+      br.style.color = clr;
+    });
 
+    bars.forEach((bar) => {
+      bar.style.color = clr;
+    });
+
+    titleH2.forEach((h2) => {
+      h2.style.color = clr;
+    });
+
+    exlistH2.forEach((exh2) => {
+      exh2.style.color = clr;
+    });
+
+    barH2.forEach(bh2 => {
+      bh2.style.setProperty('--bg', clr);
     })
 
+    // clocks.forEach((clock) => {
+    //   clock.style.color = clr;
+    // });
 
-    let toggle = true;
-    addTasks.forEach((elem, index) => {
-      let dt = elem.closest(".ex-deets");
-      let over = dt.previousElementSibling.previousElementSibling;
-      elem.addEventListener("click", () => {
-        if (toggle) {
-          setTimeout(() => {
-            taskDialog[index].show();
-          }, 1000);
-          over.classList.add("active");
-          elem.querySelector("i:first-child").style.display = "none";
-          elem.querySelector("i:nth-child(2)").style.display = "block";
-        } else {
-          Array.from(dialogs).forEach((dialog) => {
-            dialog.close();
-          });
-          over.classList.remove("active");
-          elem.querySelector("i:first-child").style.display = "block";
-          elem.querySelector("i:nth-child(2)").style.display = "none";
-        }
+  }
 
-        toggle = !toggle;
-      });
-    })
+  setInterval(setColors, 7000);
 
-    cproject.addEventListener("click", () => {
-      Array.from(dialogs).forEach((dialog) => {
+  collapse.addEventListener("click", () => {
+    container.classList.add("collapse");
+    collapse.classList.add("collapse");
+    sidebar.classList.add("collapse");
+    expand.style.display = "block";
+    bars.forEach((bar) => {
+      bar.classList.add("collapse");
+    });
+
+    h2Arr.forEach((h2) => {
+      h2.classList.add("collapse");
+    });
+  });
+
+  expand.addEventListener("click", () => {
+    container.classList.remove("collapse");
+    collapse.classList.remove("collapse");
+    sidebar.classList.remove("collapse");
+    expand.style.display = "none";
+
+    bars.forEach((bar) => {
+      bar.classList.remove("collapse");
+    });
+
+    h2Arr.forEach((h2) => {
+      h2.classList.remove("collapse");
+    });
+  });
+
+  let addToggle = true;
+
+  add.addEventListener("click", () => {
+    if (addToggle) {
+      setTimeout(() => {
+        dialog.show();
+      }, 2000);
+      document.querySelector(".overlay").classList.add("active");
+      changeBtn();
+    } else {
+      setTimeout(() => {
         dialog.close();
-      });
-      document.querySelector("#p-form").show();
-    });
+      }, 200);
+      document.querySelector(".overlay").classList.remove("active");
+      changeBtn(1);
+    }
 
-    crCasual.addEventListener("click", () => {
-      Array.from(dialogs).forEach((dialog) => {
-        dialog.close();
-      });
-      document.querySelector("#c-form").show();
-    });
+    addToggle = !addToggle;
+  });
 
-
-    projects.forEach((project, index) => {
-      project.addEventListener("click", () => {
-        projects.forEach((prj) => {
-          prj.classList.remove("maximize");
-        });
-        
-        // Call editBtns function to update the details on the screen
-        editBtns(project);
-        updateEngine.saveButtons(project);
-        deets[index].classList.add("close");
-        project.classList.add("maximize");
-        exdeets[index].classList.add("active");
-      });
-    });
-
-
-    const addTask = document.getElementById("add-task");
-
-    let taskToggle = true;
-    addTask.addEventListener("click", () => {
-      console.log("back button clicked");
-
-      if (taskToggle) {
+  let toggle = true;
+  addTasks.forEach((elem, index) => {
+    let dt = elem.closest(".ex-deets");
+    let over = dt.previousElementSibling.previousElementSibling;
+    elem.addEventListener("click", () => {
+      if (toggle) {
         setTimeout(() => {
-          taskForm.show();
+          taskDialog[index].show();
         }, 1000);
-
-        document.body.querySelector(".overlay").classList.add("active");
-        addTask.querySelector("i:first-child").style.display = "none";
-        addTask.querySelector("i:nth-child(2)").style.display = "block";
+        over.classList.add("active");
+        elem.querySelector("i:first-child").style.display = "none";
+        elem.querySelector("i:nth-child(2)").style.display = "block";
       } else {
-        taskForm.close();
-        document.body.querySelector(".overlay").classList.remove("active");
-        addTask.querySelector("i:first-child").style.display = "block";
-        addTask.querySelector("i:nth-child(2)").style.display = "none";
+        Array.from(dialogs).forEach((dialog) => {
+          dialog.close();
+        });
+        over.classList.remove("active");
+        elem.querySelector("i:first-child").style.display = "block";
+        elem.querySelector("i:nth-child(2)").style.display = "none";
       }
 
-      taskToggle = !taskToggle;
+      toggle = !toggle;
     });
+  });
 
-    collapsetwo.forEach((collapse, index) => {
-        collapse.addEventListener("click", (event) => {
-            event.stopPropagation();
-            exdeets[index].classList.remove("active");
-            projects[index].classList.remove("maximize");
-            deets[index].classList.remove("close");
-        });
+  cproject.addEventListener("click", () => {
+    Array.from(dialogs).forEach((dialog) => {
+      dialog.close();
     });
+    document.querySelector("#p-form").show();
+  });
 
-    // hrs.forEach(hr => {
-    //   hr.addEventListener()
-    // })
+  crCasual.addEventListener("click", () => {
+    Array.from(dialogs).forEach((dialog) => {
+      dialog.close();
+    });
+    document.querySelector("#c-form").show();
+  });
 
   
 
-    function changeBtn(def = 0){
+  projects.forEach((project, index) => {
+    project.addEventListener("click", () => {
+      projects.forEach((prj) => {
+        prj.classList.remove("maximize");
+      });
 
-      if(def === 1){
-          add.querySelector("i:first-child").style.display = "block";
-          add.querySelector("i:nth-child(2)").style.display = "none";
-      }else{
-          add.querySelector("i:first-child").style.display = "none";
-          add.querySelector("i:nth-child(2)").style.display = "block";
-      }
+      // Call editBtns function to update the details on the screen
+      editBtns(project);
+      updateEngine.saveButtons(project);
+      deets[index].classList.add("close");
+      project.classList.add("maximize");
+      exdeets[index].classList.add("active");
+    });
+  });
+
+  const addTask = document.getElementById("add-task");
+
+  let taskToggle = true;
+  addTask.addEventListener("click", () => {
+    console.log("back button clicked");
+
+    if (taskToggle) {
+      setTimeout(() => {
+        taskForm.show();
+      }, 1000);
+
+      document.body.querySelector(".overlay").classList.add("active");
+      addTask.querySelector("i:first-child").style.display = "none";
+      addTask.querySelector("i:nth-child(2)").style.display = "block";
+    } else {
+      taskForm.close();
+      document.body.querySelector(".overlay").classList.remove("active");
+      addTask.querySelector("i:first-child").style.display = "block";
+      addTask.querySelector("i:nth-child(2)").style.display = "none";
     }
 
-    function editBtns(parent){
-        let pencils = parent.querySelectorAll(".arr i:last-of-type");
-        console.log(pencils);
-        let exlist = parent.querySelectorAll(".ex-list");
-        let parDialogs = parent.querySelectorAll(".ex-list dialog");
-        // console.log(parDialogs);
-        let checks = parent.querySelectorAll(".ex-list input[type='checkbox']");
-        let hrs = parent.querySelectorAll(".ex-list > hr");
-        const closepencils = parent.querySelectorAll(".pencil .task-heading i");
+    taskToggle = !taskToggle;
+  });
 
-        let i = 0;
-        pencils.forEach((pencil, index) => {
-          pencil.addEventListener("click", () => {
-            parDialogs.forEach((pDialog) => {
-              pDialog.close();
-              i++;
-              // console.log(i);
-              // console.log(pencil);
-            });
+  collapsetwo.forEach((collapse, index) => {
+    collapse.addEventListener("click", (event) => {
+      event.stopPropagation();
+      exdeets[index].classList.remove("active");
+      projects[index].classList.remove("maximize");
+      deets[index].classList.remove("close");
+    });
+  });
 
-            let taskName =  exlist[index].querySelector("li > label > span").textContent;
-            let taskPriority =  exlist[index].querySelector(".priority").textContent;
-            let taskTime =  exlist[index].querySelector(".time-created").textContent;
-            const values = [taskName, taskPriority, taskTime];
-            const inputs = parDialogs[index].querySelectorAll('input[type="text"], input[type="number"], input.rem');
+  // hrs.forEach(hr => {
+  //   hr.addEventListener()
+  // })
 
-            for (let i = 0; i < inputs.length; i++) {
-              inputs[i].value = values[i];
-            }
-
-            parDialogs[index].show();
-          });
-        });
-
-        closepencils.forEach((cpencil, index) => {
-          cpencil.addEventListener("click", () => {
-            parDialogs[index].close();
-          });
-        });
-
-         checks.forEach((check, index) => {
-          check.addEventListener("change", (event) => {
-            if(event.target.checked){
-              hrs[index].classList.add("active");
-            }else{
-              hrs[index].classList.remove("active");
-            }
-        })
-    })
+  function changeBtn(def = 0) {
+    if (def === 1) {
+      add.querySelector("i:first-child").style.display = "block";
+      add.querySelector("i:nth-child(2)").style.display = "none";
+    } else {
+      add.querySelector("i:first-child").style.display = "none";
+      add.querySelector("i:nth-child(2)").style.display = "block";
     }
-    
-    return { editBtns, changeBtn };
-    
+  }
+
+  function editBtns(parent) {
+    let pencils = parent.querySelectorAll(".arr i:last-of-type");
+    // console.log(pencils);
+    let exlist = parent.querySelectorAll(".ex-list");
+    let parDialogs = parent.querySelectorAll(".ex-list dialog");
+    // console.log(parDialogs);
+    let checks = parent.querySelectorAll(".ex-list input[type='checkbox']");
+    let hrs = parent.querySelectorAll(".ex-list > hr");
+    const closepencils = parent.querySelectorAll(".pencil .task-heading i");
+
+    pencils.forEach((pencil, index) => {
+      pencil.addEventListener("click", () => {
+        parDialogs.forEach((pDialog) => {
+          pDialog.close();
+          // console.log(i);
+          // console.log(pencil);
+        });
+
+        let taskName =
+          exlist[index].querySelector("li > label > span").textContent;
+        let taskPriority = exlist[index].querySelector(".priority").textContent;
+        let taskTime = exlist[index].querySelector(".time-created").textContent;
+        const values = [taskName, taskPriority, taskTime];
+        const inputs = parDialogs[index].querySelectorAll(
+          'input[type="text"], input[type="number"], input.rem'
+        );
+
+        for (let i = 0; i < inputs.length; i++) {
+          inputs[i].value = values[i];
+        }
+
+        parDialogs[index].show();
+      });
+    });
+
+    closepencils.forEach((cpencil, index) => {
+      cpencil.addEventListener("click", () => {
+        parDialogs[index].close();
+      });
+    });
+
+    checks.forEach((check, index) => {
+      check.addEventListener("change", (event) => {
+        if (event.target.checked) {
+          hrs[index].classList.add("active");
+        } else {
+          hrs[index].classList.remove("active");
+        }
+      });
+
+      let flag = 0;
+
+      
+
+    });
+  }
+
+  return { editBtns, changeBtn, setColors };
 })();
 
 
@@ -350,6 +400,7 @@ const factory = (function(){
 
 
       last.insertAdjacentElement("afterend", exClone);
+      console.log(exClone.closest(".project"));
     }
 
     function createlist(name, priority, reminder){
@@ -357,7 +408,7 @@ const factory = (function(){
         projectArr.push(obj);
     }
 
-    return{ createProject, createlist, projectEngine, casualEngine, listEngine };
+    return{ createProject, createlist, projectEngine, casualEngine, listEngine, addClick };
 })();
 
 const updateEngine = (function(){
@@ -407,6 +458,7 @@ const updateEngine = (function(){
     });
     
     function addEvents(element){
+        let deleteP = element.querySelector(".dts .fa-trash-alt");
         let newBtns = document.querySelectorAll(".ex-lists > dialog button");
         let el = element.querySelector(".ex-list");
         let dels = element.querySelectorAll(".arr .fa-trash-alt");
@@ -420,6 +472,7 @@ const updateEngine = (function(){
         });
 
         let evForms = element.querySelectorAll("form");
+        console.log(evForms);
         let toggle = true;
         let over = element.querySelector(".overlay");
         let taskBtn = element.querySelector(".ex-lists > button");
@@ -457,6 +510,15 @@ const updateEngine = (function(){
           });
         });
 
+        deleteP.addEventListener("click", (event) => {
+          event.stopPropagation();
+          let target = deleteP.closest(".project");
+          target.classList.add("delete");
+          setTimeout(() => {
+            target.remove();
+          }, 2000);
+        })
+
     };
 
     deleteProject.forEach(pro => {
@@ -472,25 +534,27 @@ const updateEngine = (function(){
 
     function saveButtons(par){
       const saveBtns = par.querySelectorAll(".pencil form .inputbox button");
+      console.log(`savbtns`);
+      console.log(saveBtns);
 
       saveBtns.forEach((save, index) => {
         save.addEventListener("click", () => {
-            let prj = document.querySelector(".project.maximize");
-            let savDialogs = prj.querySelectorAll(".ex-list dialog");
-            const exlist = prj.querySelectorAll(".ex-list");
-            console.log(exlist);
-  
-            let tname = exlist[index].querySelector("li > label > span");
-            let tpriority = exlist[index].querySelector(".priority");
-            let tTime = exlist[index].querySelector(".time-created");
-            const values = [tname, tpriority, tTime];
-            const inputs = savDialogs[index].querySelectorAll('input[type="text"], input[type="number"], input.rem');
-  
-            for(let i = 0; i < inputs.length; i++){
-              values[i].textContent = inputs[i].value;
-            }
-  
-            savDialogs[index].close();
+          let prj = document.querySelector(".project.maximize");
+          let savDialogs = prj.querySelectorAll(".ex-list dialog");
+          const exlist = prj.querySelectorAll(".ex-list");
+          console.log(exlist);
+          
+          let tname = exlist[index].querySelector("li > label > span");
+          let tpriority = exlist[index].querySelector(".priority");
+          let tTime = exlist[index].querySelector(".time-created");
+          const values = [tname, tpriority, tTime];
+          const inputs = savDialogs[index].querySelectorAll('input[type="text"], input[type="number"], input.rem');
+          
+          for(let i = 0; i < inputs.length; i++){
+            values[i].textContent = inputs[i].value;
+          }
+          
+          savDialogs[index].close();
         });
       });
     }
@@ -499,17 +563,5 @@ const updateEngine = (function(){
     return { saveButtons, addEvents };
 })();
 
-const appEngine = (function(){
-    // const linames = document.querySelectorAll(".ex-list li label");
-    // const liPriority = document.querySelectorAll(".ex-list .arrows .clock .priority");
-    // const liTime = document.querySelectorAll(".ex-list .arrows .clock .time-created");
-    
-    // for(let i = 0; i < 5; i++){
-    //     let listObj = factory.createlist(linames[i].textContent, liPriority[i].textContent, liTime[i].textContent);
-    //     factory.listArr.push(listObj);
-    // }
 
-
-
-})();
 

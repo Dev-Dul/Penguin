@@ -2,12 +2,36 @@
     border: 1px solid;
 } */
 
+@font-face {
+    font-family: "ert";
+    src: url("./Assets/ErotiqueAlternateTrial-Regular.ttf");
+}
+
+@font-face {
+    font-family: "lovely";
+    src: url("./Assets/Lovely\ Greeting.ttf");
+}
+
+@font-face {
+    font-family: "against";
+    src: url("./Assets/against\ regular.otf");
+}
+
+@font-face {
+    font-family: "mewatonia";
+    src: url("./Assets/MEWATONIA.ttf");
+}
+
 body{
     margin: 0;
     padding: 0;
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
+    font-family: "mewatonia";
+    transition: all 3s ease;
+    background: linear-gradient( #fff 35%, #d8e2dc 100%);
+    /* backdrop-filter: blur(5px); */
 }
 
 .overlay{
@@ -60,6 +84,7 @@ body{
    flex-direction: column;
    border-right: 2px solid;
    overflow: hidden;
+   background: #0b0b0b;
    transition: all 0.8s ease;
 }
 
@@ -133,6 +158,7 @@ body{
 .bar > *{
     height: 100%;
     width: 50%;
+    color: #d8e2dc;
     transition: all 1s ease;
 }
 
@@ -163,7 +189,7 @@ body{
     width: 2px;
     padding: 0;
     margin: 0;
-    background: black;
+    background: var(--bg, black);
 }
 
 
@@ -221,7 +247,9 @@ body{
     grid-template-columns: 1fr;
     grid-template-rows: 70px 100px 1fr;
     position: relative;
-    height: auto;
+    height: 100%;
+    overflow: auto;
+    scrollbar-width: none;
 }
 
 
@@ -232,7 +260,9 @@ body{
 }
 
 h1{
+    font-family: "ert";
     border-bottom: 3px solid;
+    transition: all 1.5s ease;
 }
 
 .icon-right, .icon-left{
@@ -245,7 +275,10 @@ h1{
     display: block;
     margin: 0 10px;
     font-size: 1.5rem;
+    transition: all 1s ease;
 }
+
+
 
 .quote{
     width: 100%;
@@ -253,6 +286,8 @@ h1{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    font-family: "lovely";
+    font-size: 1.3rem;
 }
 
 .quote > p{
@@ -286,18 +321,26 @@ h1{
     left: 17%;
 }
 
+.p-heading, .c-heading{
+    font-family: "against";
+    transition: all 1.5s ease;
+}
+
 .projects .major{
     align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
+    flex-grow: 0;
     border-right: 2px solid;
 }
 
 .major .project{
     height: 30%;
     width: 25%;
+    /* max-height: 140px; */
     /* display: flex; */
     padding: 0;
+    flex: 0 0 auto;
     /* align-items: flex-end; */
     margin: 40px 1.5rem;
     border-radius: 15px;
@@ -326,39 +369,6 @@ h1{
     transform: translateY(100vh);
 }
 
-.fd-icon{
-    position: absolute;
-    /* width: 100%;
-    height: 100%; */
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 100;
-    background: red;
-    /* border-radius: 0px 10px 0px 0px; */
-}
-
-/* .fd-icon::before{
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    width: 100%;
-    height: 100%;
-    background: white;
-    border-radius: 20px 20px 0px 0px;
-}
-
-.fd-icon::after{
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: 0px;
-    height: 6px;
-    width: 100px;
-    background: black;
-    border-top-right-radius: 10px;
-} */
 
 .fd-icon i{
     display: block;
@@ -381,17 +391,54 @@ h1{
     padding:  0.2rem;
 }
 
+
 .deets.close{
     display: none;
 }
 
+.deets h3{
+    position: relative;
+    padding: 0;
+}
+
+.deets h3::before{
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 20px;
+    z-index: -1;
+    background: red;
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+}
+
+/* .deets h3::after{
+    content: '';
+    position: absolute;
+    right: -100%;
+    width: 0;
+    height: 0;
+    top: -2px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 25px solid red;
+    transform: rotate(90deg);
+} */
+
 .deets > *{
     font-size: 1rem;
-    color: grey;
-    opacity: 0.45;
     padding: 0 0.5rem;
-    /* margin: 0; */
     margin: 2.5px 0;
+}
+
+.deets i{
+    color: grey;
+    opacity: 0.5;
+    transition: all .6s ease;
+}
+
+.deets i:hover{
+    opacity: 1;
+    color: black;
 }
 
 .deets h3{
@@ -446,6 +493,7 @@ h1{
 .ex-heading .title h2{
     font-size: 2.5rem;
     margin-bottom: 0;
+    transition: all 1s ease;
 }
 
 .ex-heading .title p{
@@ -454,8 +502,9 @@ h1{
 
 .ex-brief{
     width: 80%;
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
     margin-top: 5.5rem;
+    background: #d8e2dc;
 }
 
 .ex-lists{
@@ -467,6 +516,7 @@ h1{
 }
 .ex-lists h2{
     margin-left: 2rem;
+    transition: all 1s ease;
 }
 
 .ex-lists ul{
@@ -498,6 +548,10 @@ h1{
     margin: 0 auto;
     opacity: 0;
     transition: all 1.5s ease;
+}
+
+.ex-list .fa-clock{
+    transition: all 1s ease;
 }
 
 @keyframes hr {
@@ -552,6 +606,12 @@ h1{
     display: inline-block;
 }
 
+.ex-list dialog.pencil{
+    position: fixed;
+    z-index: 10;
+    left: 12%;
+}
+
 .casuals .casual{
     height: 150px;
     width: 70%;
@@ -561,6 +621,7 @@ h1{
     border: 0.5px solid;
     overflow: hidden;
 }
+
 
 .list{
     width: 100%;
@@ -599,6 +660,7 @@ h1{
     width: 15px;
     border-radius: 50%;
     background: green;
+    transition: all 1s ease;
 }
 
 .btn{
@@ -722,9 +784,6 @@ h1{
     height: 100%;
 }
 
-.pencil{
-    left: -10%;
-}
 
 .pencil .inputbox button{
     width: 103%;
