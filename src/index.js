@@ -27,6 +27,7 @@ const displayController = (function(){
     deets = document.querySelectorAll(".deets"),
     taskForm = document.querySelector("#task-form");
 
+  const header = document.querySelector(".icons-bar.two");
   const dots = document.querySelectorAll(".dot");
   const brs = document.querySelectorAll(".bar >*");
   const exBrief = document.querySelectorAll(".ex-brief");
@@ -40,6 +41,7 @@ const displayController = (function(){
     let clr = colorArr[index];
 
     body.style.background = `linear-gradient( #fff 35%, ${clr} 100%)`;
+    header.style.background = clr;
 
     dots.forEach((dot) => {
       dot.style.background = clr;

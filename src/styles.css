@@ -103,6 +103,8 @@ body{
     flex-direction: column;
 }
 
+
+
 .first, .second{
     /* padding: 10px 0; */
     width: 100%;
@@ -257,6 +259,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    backdrop-filter: blur(10px);
+    transition: all 1.5s ease;
 }
 
 h1{
