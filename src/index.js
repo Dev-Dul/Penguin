@@ -6,6 +6,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 const prBtn = document.getElementById("prBtn");
 const caBtn = document.getElementById("caBtn"); 
 
+// Display contoller: adds color changing functionality, handles expand & collapse events, adds event listeners to projects.
 const displayController = (function(){
   const body = document.body;
   const container = document.getElementById("container");
@@ -71,10 +72,6 @@ const displayController = (function(){
     barH2.forEach(bh2 => {
       bh2.style.setProperty('--bg', clr);
     })
-
-    // clocks.forEach((clock) => {
-    //   clock.style.color = clr;
-    // });
 
   }
 
@@ -218,9 +215,6 @@ const displayController = (function(){
     });
   });
 
-  // hrs.forEach(hr => {
-  //   hr.addEventListener()
-  // })
 
   function changeBtn(def = 0) {
     if (def === 1) {
@@ -234,10 +228,8 @@ const displayController = (function(){
 
   function editBtns(parent) {
     let pencils = parent.querySelectorAll(".arr i:last-of-type");
-    // console.log(pencils);
     let exlist = parent.querySelectorAll(".ex-list");
     let parDialogs = parent.querySelectorAll(".ex-list dialog");
-    // console.log(parDialogs);
     let checks = parent.querySelectorAll(".ex-list input[type='checkbox']");
     let hrs = parent.querySelectorAll(".ex-list > hr");
     const closepencils = parent.querySelectorAll(".pencil .task-heading i");
@@ -246,8 +238,6 @@ const displayController = (function(){
       pencil.addEventListener("click", () => {
         parDialogs.forEach((pDialog) => {
           pDialog.close();
-          // console.log(i);
-          // console.log(pencil);
         });
 
         let taskName =
@@ -282,10 +272,6 @@ const displayController = (function(){
         }
       });
 
-      let flag = 0;
-
-      
-
     });
   }
 
@@ -297,26 +283,6 @@ const displayController = (function(){
 
 const factory = (function(){
     const parent = document.querySelector(".projects");
-    const projectArr = [];
-    const listArr = [];
-    function project(name, date, heading, brief, lists){
-        this.name = name;
-        this.date = date;
-        this.heading = heading;
-        this.brief = brief;
-        this.lists = lists;
-    }
-
-    function list(name, priority, reminder){
-        this.name = name;
-        this.priority = priority;
-        this.reminder = reminder;
-    }
-
-    function createProject(name, date, heading, brief, lists){
-        let obj = new project(name, date, heading, brief, lists);
-        projectArr.push(obj);
-    }
 
     function addClick(element) {
       let prjs = document.querySelectorAll(".project");
@@ -405,12 +371,7 @@ const factory = (function(){
       console.log(exClone.closest(".project"));
     }
 
-    function createlist(name, priority, reminder){
-        let obj = new list(name, priority, reminder);
-        projectArr.push(obj);
-    }
-
-    return{ createProject, createlist, projectEngine, casualEngine, listEngine, addClick };
+    return{ projectEngine, casualEngine, listEngine, addClick };
 })();
 
 const updateEngine = (function(){
