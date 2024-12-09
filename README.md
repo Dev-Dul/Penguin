@@ -12,7 +12,7 @@ Welcome to **Penguin**, a sleek and intuitive to-do list app designed to help yo
 - [Technologies Used](#technologies-used)  
 - [Contributing](#contributing)  
 - [License](#license)  
-- [Contact](#contact)  
+- [Live Preview](#preview)
 
 ---
 
@@ -59,3 +59,13 @@ And you're good to go!!!.
   2. CSS
   3. JavaScript.
   4.  Webpack
+
+_ _ _
+
+## **Live Preview**
+Visit the link below to try out the first version of Penguin. (Don't forget to leave a star 🌟).
+
+
+https://dev-dul.github.io/Penguin/
+
+Note: The site is currently not reaponsive. I recommend visiting on a laptop or desktop for a better and smoother experience.
